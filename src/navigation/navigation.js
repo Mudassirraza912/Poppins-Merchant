@@ -13,6 +13,12 @@ import VerificationOTP from '../screens/ForgotPassword/Verification'
 import ChangePassword from '../screens/ForgotPassword/changePassword'
 import SignUp from '../screens/SignUp/signup'
 import BottomTabs from './bottomNavigation'
+import ChangeNumber from '../screens/ChangeNumber'
+import PrivacyPolicy from '../screens/PrivacyPolicy'
+import TermsAndConditions from '../screens/TermAndConditions'
+import { ContactUs } from '../screens/ContactUs/contactUs'
+import { NotificationSetting } from '../screens/Notification/NotificationSetting'
+import StoreFeedback from "../screens/StoreFeedback"
 
 const Stack = createStackNavigator()
 
@@ -27,6 +33,13 @@ const MainNavigation = () => {
         <Stack.Screen name="ChangePassword" component={ChangePassword} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Home" component={BottomTabs} />
+        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+        <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="ContactUs" component={ContactUs} />
+        <Stack.Screen name="NotificationSetting" component={NotificationSetting} />
+        <Stack.Screen name="ChangeNumber" component={ChangeNumber} />
+        <Stack.Screen name="StoreFeedback" component={StoreFeedback} />
       </Stack.Navigator>
     </NavigationContainer>
   )

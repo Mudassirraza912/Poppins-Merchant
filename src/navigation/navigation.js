@@ -12,6 +12,7 @@ import ForgotPassword from '../screens/ForgotPassword/forgotPassword'
 import VerificationOTP from '../screens/ForgotPassword/Verification'
 import ChangePassword from '../screens/ForgotPassword/changePassword'
 import SignUp from '../screens/SignUp/signup'
+import BottomTabs from './bottomNavigation'
 
 const Stack = createStackNavigator()
 
@@ -25,6 +26,7 @@ const MainNavigation = () => {
         <Stack.Screen name="VerificationOTP" component={VerificationOTP} />
         <Stack.Screen name="ChangePassword" component={ChangePassword} />
         <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="Home" component={BottomTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   )

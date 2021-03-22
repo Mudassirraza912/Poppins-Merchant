@@ -36,7 +36,7 @@ const SignIn = ({navigation}) => {
 
                     <View style={styles.blockContainer}>
                         <Button 
-                            onPress={() => navigation.navigate("EnableLocation")}
+                            onPress={() => navigation.navigate("Home")}
                             title="Sign in" 
                             titleStyle={fontStyles.ProximaSemiBold} 
                             />

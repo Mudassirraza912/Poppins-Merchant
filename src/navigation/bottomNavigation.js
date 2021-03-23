@@ -7,6 +7,8 @@ import Home from '../screens/Home/Home.screen'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwsome from 'react-native-vector-icons/FontAwesome'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { Notification } from '../screens/Notification/Notification'
+import Settings from '../screens/Settings'
 // import { Notification } from '../screens/Notification/Notification'
 // import Settings from '../screens/Settings'
 // import { Order } from '../screens/Order/order'
@@ -51,7 +53,7 @@ function BottomTabs() {
       />
       <Tab.Screen
         name="Notification"
-        component={Home}
+        component={Notification}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
             return <Ionicons name={'ios-notifications'} size={25} color={color} />
@@ -64,7 +66,7 @@ function BottomTabs() {
       />
       <Tab.Screen
         name="Settings"
-        component={Home}
+        component={Settings}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
             return <Ionicons name={'ios-settings'} size={25} color={color} />

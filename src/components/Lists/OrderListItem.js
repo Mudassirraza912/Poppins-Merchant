@@ -1,5 +1,6 @@
 import React from "react"
 import { View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native'
+import { fontStyles } from "../../constants/fontStyles"
 
 const people = require('../../assets/images/people.png')
 export const OrderListItem = ({
@@ -8,7 +9,8 @@ export const OrderListItem = ({
     name = "John Doe",
     numOfItem = "2",
     remainTime = "7 mint",
-    price = "17.00"
+    price = "17.00",
+    orderStatus = "Pickup in"
 }) => {
 
     return(
@@ -16,7 +18,7 @@ export const OrderListItem = ({
             <View style={[{flexDirection: 'row', marginHorizontal: 5}]}>
                 <Image source={people} style={styles.imageStyle} />
                 <View style={[styles.blockContainer]}>
-                    <Text style={[styles.itemContainer]}>
+                    <Text style={[styles.itemContainer, fontStyles.ProximaSemiBoldSmall]}>
                         {name}
                     </Text>
                     <Text style={[styles.itemContainer]}>
@@ -25,15 +27,15 @@ export const OrderListItem = ({
                 </View>
             </View>
             <View style={[styles.blockContainer]}>
-                <Text style={[styles.itemContainer]}>
+                <Text style={[styles.itemContainer, fontStyles.ProximaSemiBoldSmall]}>
                    {remainTime}
                 </Text>
                 <Text style={[styles.itemContainer]}>
-                    Pickup in
+                    {orderStatus}
                 </Text>
             </View>
             <View style={[styles.blockContainer]}>
-                <Text style={[styles.itemContainer]}>
+                <Text style={[styles.itemContainer, fontStyles.ProximaSemiBoldSmall]}>
                    ${price}
                 </Text>
                 <Text style={[styles.itemContainer]}>

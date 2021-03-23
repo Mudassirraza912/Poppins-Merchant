@@ -10,6 +10,7 @@ import styles from './Home.style'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { connect, useDispatch } from 'react-redux'
 import { fetchDataUser } from '../../stores/actions/user.action'
+import Header from '../../components/Header'
 import { OrderListItem } from '../../components/Lists/OrderListItem'
 
 const Home = ({ navigation, user }) => {

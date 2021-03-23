@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native'
 import Button from '../../components/Button'
+import Invoice from '../../components/Invoice'
 import { fontStyles } from '../../constants/fontStyles'
 const Splash = require('../../assets/images/Splash.png')
 const LandingScreen = ({ navigation }) => {
@@ -10,7 +11,7 @@ const LandingScreen = ({ navigation }) => {
 
     return (
         <View style={{ flex: 1 }}>
-            <ImageBackground source={Splash} style={styles.backgroundImage}>
+            {/* <ImageBackground source={Splash} style={styles.backgroundImage}>
                 <View style={styles.mainContainer}>
                     <Text style={[fontStyles.ProximaBoldH1, { color: "#fff", fontSize: 35 }]}>
                         Poppins
@@ -33,7 +34,8 @@ const LandingScreen = ({ navigation }) => {
                         titleStyle={[fontStyles.ProximaSemiBold]}
                     />
                 </View>
-            </ImageBackground>
+            </ImageBackground> */}
+            <Invoice />
         </View>
     )
 }

@@ -3,12 +3,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'reactNativeBoilerplate' do
+target 'PoppinsMerchant' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'reactNativeBoilerplateTests' do
+  target 'PoppinsMerchantTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -23,10 +23,10 @@ target 'reactNativeBoilerplate' do
   end
 end
 
-target 'reactNativeBoilerplate-tvOS' do
-  # Pods for reactNativeBoilerplate-tvOS
+target 'PoppinsMerchant-tvOS' do
+  # Pods for PoppinsMerchant-tvOS
 
-  target 'reactNativeBoilerplate-tvOSTests' do
+  target 'PoppinsMerchant-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

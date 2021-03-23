@@ -19,6 +19,7 @@ import TermsAndConditions from '../screens/TermAndConditions'
 import { ContactUs } from '../screens/ContactUs/contactUs'
 import { NotificationSetting } from '../screens/Notification/NotificationSetting'
 import StoreFeedback from "../screens/StoreFeedback"
+import OrderHistory from '../screens/OrderHistory'
 
 const Stack = createStackNavigator()
 
@@ -40,6 +41,7 @@ const MainNavigation = () => {
         <Stack.Screen name="NotificationSetting" component={NotificationSetting} />
         <Stack.Screen name="ChangeNumber" component={ChangeNumber} />
         <Stack.Screen name="StoreFeedback" component={StoreFeedback} />
+        <Stack.Screen name="OrderHistory" component={OrderHistory} />
       </Stack.Navigator>
     </NavigationContainer>
   )

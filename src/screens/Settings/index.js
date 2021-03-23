@@ -34,7 +34,7 @@ const Settings = ({ navigation }) => {
             containerStyle: {
                 paddingVertical: 20
             },
-            // onPress: () => navigation.navigate("PaymentCard")
+            onPress: () => navigation.navigate("OrderHistory")
         },
         {
             title: "Change Password",

@@ -11,7 +11,7 @@ const LandingScreen = ({ navigation }) => {
 
     return (
         <View style={{ flex: 1 }}>
-            {/* <ImageBackground source={Splash} style={styles.backgroundImage}>
+            <ImageBackground source={Splash} style={styles.backgroundImage}>
                 <View style={styles.mainContainer}>
                     <Text style={[fontStyles.ProximaBoldH1, { color: "#fff", fontSize: 35 }]}>
                         Poppins
@@ -34,8 +34,7 @@ const LandingScreen = ({ navigation }) => {
                         titleStyle={[fontStyles.ProximaSemiBold]}
                     />
                 </View>
-            </ImageBackground> */}
-            <Invoice />
+            </ImageBackground>
         </View>
     )
 }

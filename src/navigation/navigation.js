@@ -20,6 +20,7 @@ import { ContactUs } from '../screens/ContactUs/contactUs'
 import { NotificationSetting } from '../screens/Notification/NotificationSetting'
 import StoreFeedback from "../screens/StoreFeedback"
 import OrderHistory from '../screens/OrderHistory'
+import { NewOrder } from '../screens/NewOrder/newOrder'
 
 const Stack = createStackNavigator()
 
@@ -42,6 +43,7 @@ const MainNavigation = () => {
         <Stack.Screen name="ChangeNumber" component={ChangeNumber} />
         <Stack.Screen name="StoreFeedback" component={StoreFeedback} />
         <Stack.Screen name="OrderHistory" component={OrderHistory} />
+        <Stack.Screen name="NewOrder" component={NewOrder} />
       </Stack.Navigator>
     </NavigationContainer>
   )

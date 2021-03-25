@@ -4,13 +4,10 @@ export const fontStyles = StyleSheet.create({
  ProximaBoldH1 : {
      fontFamily: "ProximaNova-Bold",
      fontSize: 28,
-     lineHeight: 20
  },
  ProximaBoldH2 : {
     fontFamily: "ProximaNova-Bold",
     fontSize: 21,
-    lineHeight: 20
-
 },
 ProximaSemiBold: {
     fontFamily: "ProximaNova-Semibold",

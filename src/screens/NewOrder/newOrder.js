@@ -1,15 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, Image, StyleSheet, FlatList } from 'react-native'
 import Header from '../../components/Header'
 import { ItemList } from '../../components/List/itemList'
 import { fontStyles } from '../../constants/fontStyles'
-
+import Button from '../../components/Button/index'
 const car = require('../../assets/images/car.png')
+import CustomModal from '../../components/Modal/index'
 
-export const NewOrder = () => {
-
+export const NewOrder = ({navigation}) => {
+    const [visible, setVisible] = useState(false)
     return(
-        <View style={{flex: 1,backgroundColor: '#fff'}}>
+        <View style={{flex: 1, backgroundColor: '#fff'}}>
+            <CustomModal
+                title={"Are you sure you want to reject the order?"}
+                modalVisibel={visible}
+                btnHorizontal
+                
+                buttons={[
+                    {
+                        title: "Yes",
+                        titleStyle:{ color: '#000'},
+                        onPress: () => {
+                            setVisible(false)
+                            navigation.navigate("Home", {activeTab : 1})
+                        },
+                        backgroundColor:"transparent",
+                        containerStyle: {width: '45%', marginHorizontal: 10},
+                    },
+                    {
+                        title: "No",
+                        onPress: () => {
+                            setVisible(false)
+                        },
+                        containerStyle: {width: '45%', marginHorizontal: 10},
+                    }
+                ]}
+            />
              <Header centerText="New Orders" leftIcon={true} leftIconName="arrow-back" />
                 <View style={{backgroundColor: '#F1F2FA', padding: 10}}>
                     <View style={[styles.rowSpaceBtw, styles.blockContainer, {marginTop: 10}]}>
@@ -46,6 +72,21 @@ export const NewOrder = () => {
                     }}
                 />
             </View>
+
+
+            <View style={[styles.rowSpaceBtw, styles.btnContainer]}>
+                <Button 
+                    title="Reject" 
+                    lightTheme 
+                    onPress={() => {setVisible(true)}}
+                    containerStyle={{width: '45%'}}
+                 />
+                <Button 
+                    title="Accept" 
+                    onPress={() => {}} 
+                    containerStyle={{width: '45%'}}
+                />
+            </View>
         </View>
     )
 }
@@ -71,5 +112,10 @@ const styles = StyleSheet.create({
         height: 1,
         width: '90%',
         alignSelf: 'center'
+    },
+    btnContainer: {
+        alignSelf: 'center',
+        position: 'absolute',
+        bottom: 30
     }
 })

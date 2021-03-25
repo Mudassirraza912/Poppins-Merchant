@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   SafeAreaView,
   View,
@@ -13,9 +13,17 @@ import Header from '../../components/Header'
 import { OrderListItem } from '../../components/Lists/OrderListItem'
 import { Body,  List, ListItem as Item, ScrollableTab, Tab, TabHeading, Tabs, Title } from "native-base";
 import { DEFAULT_THEME_COLOR } from '../../constants/colors'
-const Home = ({ navigation, user }) => {
-  
+const Home = ({ navigation, user, route }) => {
+  // const { activeTab } = route.params
+  const [initialTab, setInitialTab] = useState(0)
+  console.log("route", route)
 
+
+  // useEffect(() => {
+  //   if(activeTab){
+  //     setInitialTab(activeTab)
+  //   }
+  // }, [activeTab])
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor={'#f9f9f9'} />
@@ -23,6 +31,7 @@ const Home = ({ navigation, user }) => {
       <SafeAreaView style={styles.SafeAreaView2}>
         <View style={styles.outerWrapper}>
         <Tabs
+          initialPage={initialTab}
           tabBarActiveTextColor="#000"
           tabBarUnderlineStyle={{backgroundColor: DEFAULT_THEME_COLOR}}
           prerenderingSiblingsNumber={0}

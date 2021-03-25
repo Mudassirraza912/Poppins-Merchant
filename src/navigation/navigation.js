@@ -21,6 +21,7 @@ import { NotificationSetting } from '../screens/Notification/NotificationSetting
 import StoreFeedback from "../screens/StoreFeedback"
 import OrderHistory from '../screens/OrderHistory'
 import Invoice from '../components/Invoice'
+import AddNewItem from '../screens/Inventory/AddNewItem'
 
 const Stack = createStackNavigator()
 
@@ -44,6 +45,7 @@ const MainNavigation = () => {
         <Stack.Screen name="StoreFeedback" component={StoreFeedback} />
         <Stack.Screen name="OrderHistory" component={OrderHistory} />
         <Stack.Screen name="Invoice" component={Invoice} />
+        <Stack.Screen name="AddNewItem" component={AddNewItem} />
       </Stack.Navigator>
     </NavigationContainer>
   )

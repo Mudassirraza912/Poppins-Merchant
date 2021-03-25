@@ -19,7 +19,7 @@ const CustomModal = ({
     descriptionStyle = {},
     onPress = () => { },
     successIcon = true,
-    btnHorizontal=false,
+    btnHorizontal = false,
     buttons = [
         {
             title: "Close",
@@ -41,7 +41,9 @@ const CustomModal = ({
             onPress: () => { },
             textColor: "#fff"
         },
-    ]
+    ],
+    stockText = "",
+    stockTextStyle = {},
 }) => {
 
 
@@ -59,19 +61,21 @@ const CustomModal = ({
             onBackdropPress={() => setModalVisible(false)}>
             <View style={[{ backgroundColor: "#fff", borderRadius: 20, paddingVertical: 20, alignItems: "center" }, containerStyle]}>
 
-               {successIcon && <View style={styles.successContainer} />}
+                {successIcon && <View style={styles.successContainer} />}
 
-                <Text style={[styles.titleStyle, { ...fontStyles.ProximaBoldH2, width: "95%", textAlign: "center" }, titleStyle]}>{title}</Text>
+                <Text style={[styles.titleStyle, { ...fontStyles.ProximaBoldH2, width: "95%", textAlign: "center" }, titleStyle]}>{title}</Text>
 
+                {stockText !== '' && <Text style={[{ textAlign: "center", marginTop: 10 }, stockTextStyle]}>{stockText}</Text>}
 
                 <Text style={[styles.titleStyle, { ...fontStyles.ProximaRegularP2, textAlign: "center", width: "85%" }, descriptionStyle]}>{discription}</Text>
 
 
-                <View style={{ width: "100%", marginTop: 20 }}>
-                    <FlatList 
-                      numColumns={btnHorizontal ? 2 : 0}
-                      data={buttons}
-                      renderItem={({item, index}) => <Button {...item} /> }
+                <View style={{ width: "100%", marginTop: 20, }}>
+                    <FlatList
+                        numColumns={btnHorizontal ? 2 : 0}
+                        data={buttons}
+                        columnWrapperStyle={{ width: '100%', justifyContent: 'center' }}
+                        renderItem={({ item, index }) => <Button {...item} />}
                     />
                 </View>
             </View>

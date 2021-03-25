@@ -20,6 +20,8 @@ import { ContactUs } from '../screens/ContactUs/contactUs'
 import { NotificationSetting } from '../screens/Notification/NotificationSetting'
 import StoreFeedback from "../screens/StoreFeedback"
 import OrderHistory from '../screens/OrderHistory'
+import { NewOrder } from '../screens/OrderScreen/newOrder'
+import { AcceptedOrder } from '../screens/OrderScreen/acceptedOrder'
 import Invoice from '../components/Invoice'
 import AddNewItem from '../screens/Inventory/AddNewItem'
 
@@ -36,6 +38,7 @@ const MainNavigation = () => {
         <Stack.Screen name="ChangePassword" component={ChangePassword} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Home" component={BottomTabs} />
+        <Stack.Screen name="Orders" component={Home} />
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
         <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
         <Stack.Screen name="Profile" component={Profile} />
@@ -44,6 +47,8 @@ const MainNavigation = () => {
         <Stack.Screen name="ChangeNumber" component={ChangeNumber} />
         <Stack.Screen name="StoreFeedback" component={StoreFeedback} />
         <Stack.Screen name="OrderHistory" component={OrderHistory} />
+        <Stack.Screen name="NewOrder" component={NewOrder} />
+        <Stack.Screen name="AcceptedOrder" component={AcceptedOrder} />
         <Stack.Screen name="Invoice" component={Invoice} />
         <Stack.Screen name="AddNewItem" component={AddNewItem} />
       </Stack.Navigator>

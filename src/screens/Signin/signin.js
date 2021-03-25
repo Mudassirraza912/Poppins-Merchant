@@ -36,7 +36,7 @@ const SignIn = ({navigation}) => {
 
                     <View style={styles.blockContainer}>
                         <Button 
-                            onPress={() => navigation.navigate("Home")}
+                            onPress={() => navigation.navigate("Home", {activeTab : 0})}
                             title="Sign in" 
                             titleStyle={fontStyles.ProximaSemiBold} 
                             />

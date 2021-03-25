@@ -30,7 +30,7 @@ const ChangePassword = ({navigation, route}) => {
                         onPress: () => { 
                             setmodal(!modal) 
                             {from !== "forgot" ? 
-                            navigation.navigate("Home") 
+                            navigation.navigate("Home", {activeTab : 0}) 
                             : 
                             navigation.navigate("SignIn")}
                         },

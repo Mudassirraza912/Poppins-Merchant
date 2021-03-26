@@ -48,7 +48,9 @@ const Home = ({ navigation, user, route }) => {
               <FlatList 
                 data={[1,2,3,4]}
                 renderItem={({item, index}) => {
-                  return <OrderListItem  />
+                  return <OrderListItem onPress={() =>  navigation.navigate('AcceptedOrder', {
+                    from: 'accepted'
+                  })} />
                 }}
               />
             </Tab>
@@ -56,7 +58,9 @@ const Home = ({ navigation, user, route }) => {
               <FlatList 
                 data={[1,2,3,4]}
                 renderItem={({item, index}) => {
-                  return <OrderListItem />
+                  return <OrderListItem onPress={() =>  navigation.navigate('AcceptedOrder', {
+                    from: 'inKitchen'
+                  })} />
                 }}
               />
             </Tab>

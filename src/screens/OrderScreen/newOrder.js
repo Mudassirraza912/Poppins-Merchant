@@ -36,7 +36,7 @@ export const NewOrder = ({navigation}) => {
                     }
                 ]}
             />
-             <Header centerText="New Orders" leftIcon={true} leftIconName="arrow-back" />
+             <Header centerText="New Orders" leftIcon={true} leftIconName="arrow-back" leftButtonPress={() => navigation.goBack()} />
                 <View style={{backgroundColor: '#F1F2FA', padding: 10}}>
                     <View style={[styles.rowSpaceBtw, styles.blockContainer, {marginTop: 10}]}>
                         <View>

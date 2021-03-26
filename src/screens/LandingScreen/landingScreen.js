@@ -35,6 +35,7 @@ const LandingScreen = ({ navigation }) => {
                     />
                 </View>
             </ImageBackground>
+            {/* <Invoice /> */}
         </View>
     )
 }

@@ -17,6 +17,7 @@ const OrderHistory = ({ navigation }) => {
                     renderItem={({ item, index }) => {
                         return <OrderListItem
                             orderStatus={"Completed"}
+                            onPress={() => navigation.navigate("Invoice")}
                         />
                     }}
                 />

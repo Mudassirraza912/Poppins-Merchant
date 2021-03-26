@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import { fontStyles } from "../../constants/fontStyles"
 
 const people = require('../../assets/images/people.png')
@@ -29,7 +29,7 @@ export const OrderListItem = ({
             </View>
             <View style={[styles.blockContainer]}>
                 <Text style={[styles.itemContainer, fontStyles.ProximaSemiBoldSmall]}>
-                   {remainTime}
+                    {remainTime}
                 </Text>
                 <Text style={[styles.itemContainer, fontStyles.ProximaRegularP2, {color: '#6A7C92'}]}>
                     {orderStatus}
@@ -37,7 +37,7 @@ export const OrderListItem = ({
             </View>
             <View style={[styles.blockContainer]}>
                 <Text style={[styles.itemContainer, fontStyles.ProximaSemiBoldSmall]}>
-                   ${price}
+                    ${price}
                 </Text>
                 <Text style={[styles.itemContainer, fontStyles.ProximaRegularP2, {color: '#6A7C92'}]}>
                     Total

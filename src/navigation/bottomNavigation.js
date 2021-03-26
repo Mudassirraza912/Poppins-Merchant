@@ -9,6 +9,7 @@ import FontAwsome from 'react-native-vector-icons/FontAwesome'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { Notification } from '../screens/Notification/Notification'
 import Settings from '../screens/Settings'
+import Inventory from '../screens/Inventory'
 // import { Notification } from '../screens/Notification/Notification'
 // import Settings from '../screens/Settings'
 // import { Order } from '../screens/Order/order'
@@ -35,7 +36,7 @@ function BottomTabs() {
       />
       <Tab.Screen
         name="Inventory"
-        component={Home}
+        component={Inventory}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
             return <Ionicons name={'gift'} size={25} color={color} />

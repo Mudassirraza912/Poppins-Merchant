@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import { fontStyles } from "../../constants/fontStyles"
 
 const people = require('../../assets/images/people.png')
@@ -10,12 +10,13 @@ export const OrderListItem = ({
     numOfItem = "2",
     remainTime = "7 mint",
     price = "17.00",
-    orderStatus = "Pickup in"
+    orderStatus = "Pickup in",
+    onPress = () => { }
 }) => {
 
-    return(
-        <TouchableOpacity activeOpacity={.7} style={[styles.defaultContainerStyle, {backgroundColor: active ? '#FFBE00' : 'transparent'}, containerStyle]}>
-            <View style={[{flexDirection: 'row', marginHorizontal: 5}]}>
+    return (
+        <TouchableOpacity activeOpacity={.7} onPress={onPress} style={[styles.defaultContainerStyle, { backgroundColor: active ? '#FFBE00' : 'transparent' }, containerStyle]}>
+            <View style={[{ flexDirection: 'row', marginHorizontal: 5 }]}>
                 <Image source={people} style={styles.imageStyle} />
                 <View style={[styles.blockContainer]}>
                     <Text style={[styles.itemContainer, fontStyles.ProximaSemiBoldSmall]}>
@@ -28,7 +29,7 @@ export const OrderListItem = ({
             </View>
             <View style={[styles.blockContainer]}>
                 <Text style={[styles.itemContainer, fontStyles.ProximaSemiBoldSmall]}>
-                   {remainTime}
+                    {remainTime}
                 </Text>
                 <Text style={[styles.itemContainer]}>
                     {orderStatus}
@@ -36,7 +37,7 @@ export const OrderListItem = ({
             </View>
             <View style={[styles.blockContainer]}>
                 <Text style={[styles.itemContainer, fontStyles.ProximaSemiBoldSmall]}>
-                   ${price}
+                    ${price}
                 </Text>
                 <Text style={[styles.itemContainer]}>
                     Total

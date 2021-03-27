@@ -26,7 +26,9 @@ const List = ({
     onPress = () => { },
     image = "",
     defaultKey = false,
-    divider = false
+    divider = false,
+    rightIconColor = "#D3D8DF",
+    onRightIconPress = () => { }
 }) => {
     return (
         <>
@@ -36,7 +38,7 @@ const List = ({
                         <Text style={[fontStyles.ProximaBoldH1, styles.avatarText]}>{avatarText}</Text>
                     </View> :
                         <View style={{ width: 84, height: 84, borderRadius: 100, overflow: "hidden" }}>
-                            <Image source={avatarImage}  style={{ height: 84, width: 84 }} />
+                            <Image source={avatarImage} style={{ height: 84, width: 84 }} />
                         </View>
                         // <Thumbnail  circular={false} source={avatarImage} />
                     }
@@ -59,10 +61,10 @@ const List = ({
                 </View>
 
 
-                {rightIcon && <View style={{ position: "absolute", right: 15 }} >
-                    <Ionicons name={rightIconName} size={25} color={"#D3D8DF"} />
+                {rightIcon && <TouchableOpacity onPress={onRightIconPress} style={{ position: "absolute", right: 15 }} >
+                    <Ionicons name={rightIconName} size={25} color={rightIconColor} />
 
-                </View>}
+                </TouchableOpacity>}
             </TouchableOpacity>
             {divider && <View style={styles.dividerStyle} />}
         </>

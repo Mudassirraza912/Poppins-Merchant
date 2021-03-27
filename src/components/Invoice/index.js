@@ -10,7 +10,7 @@ import { fontStyles } from '../../constants/fontStyles';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Button from '../Button';
 
-const Invoice = () => {
+const Invoice = ({ navigation }) => {
     const renderZigZagView = () => {
         let nodes = []
         for (var i = 0; i < 40; i++) {
@@ -33,6 +33,7 @@ const Invoice = () => {
             <Header
                 centerText="Invoice"
                 leftIconName="arrow-back"
+                leftButtonPress={navigation.goBack}
             />
             {/* <View style={{ width, height: 100, backgroundColor: 'cyan' }} /> */}
 

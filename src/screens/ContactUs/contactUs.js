@@ -20,7 +20,7 @@ export const ContactUs = ({navigation}) => {
                 {
                     title: "Close",
                     onPress: () => {
-                        navigation.navigate('Home')
+                        navigation.navigate('Home', {activeTab : 0})
                         setShow(false)
                     }
                 }

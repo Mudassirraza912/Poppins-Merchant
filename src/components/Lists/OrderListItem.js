@@ -11,18 +11,18 @@ export const OrderListItem = ({
     remainTime = "7 mint",
     price = "17.00",
     orderStatus = "Pickup in",
-    onPress = () => { }
+    onPress = () => {}
 }) => {
 
-    return (
-        <TouchableOpacity activeOpacity={.7} onPress={onPress} style={[styles.defaultContainerStyle, { backgroundColor: active ? '#FFBE00' : 'transparent' }, containerStyle]}>
-            <View style={[{ flexDirection: 'row', marginHorizontal: 5 }]}>
+    return(
+        <TouchableOpacity onPress={onPress} activeOpacity={.7} style={[styles.defaultContainerStyle, {backgroundColor: active ? '#FFBE00' : 'transparent', borderBottomWidth: 1, borderBottomColor: active ? "#fff" : '#F1F2FA'}, containerStyle]}>
+            <View style={[{flexDirection: 'row', marginHorizontal: 5}]}>
                 <Image source={people} style={styles.imageStyle} />
                 <View style={[styles.blockContainer]}>
                     <Text style={[styles.itemContainer, fontStyles.ProximaSemiBoldSmall]}>
                         {name}
                     </Text>
-                    <Text style={[styles.itemContainer]}>
+                    <Text style={[styles.itemContainer, fontStyles.ProximaRegularP2, {color: '#6A7C92'}]}>
                         {numOfItem} Items
                     </Text>
                 </View>
@@ -31,7 +31,7 @@ export const OrderListItem = ({
                 <Text style={[styles.itemContainer, fontStyles.ProximaSemiBoldSmall]}>
                     {remainTime}
                 </Text>
-                <Text style={[styles.itemContainer]}>
+                <Text style={[styles.itemContainer, fontStyles.ProximaRegularP2, {color: '#6A7C92'}]}>
                     {orderStatus}
                 </Text>
             </View>
@@ -39,7 +39,7 @@ export const OrderListItem = ({
                 <Text style={[styles.itemContainer, fontStyles.ProximaSemiBoldSmall]}>
                     ${price}
                 </Text>
-                <Text style={[styles.itemContainer]}>
+                <Text style={[styles.itemContainer, fontStyles.ProximaRegularP2, {color: '#6A7C92'}]}>
                     Total
                 </Text>
             </View>

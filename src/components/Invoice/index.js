@@ -97,7 +97,7 @@ const Invoice = ({ navigation }) => {
                         <Button
                             title="Confirm pick up"
                             containerStyle={{ marginTop: 20 }}
-                        // onPress={() => setOrderPlaced(true)}
+                            onPress={() => navigation.navigate("Home")}
                         />
 
                     </View>

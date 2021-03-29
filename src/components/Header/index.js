@@ -21,6 +21,11 @@ const Header = ({
             <View>
                 <Text style={[styles.centerText, fontStyles.ProximaSemiBold]}>{centerText}</Text>
             </View>
+
+            <View style={styles.rightContainer} >
+                {renderRightComponent()}
+            </View>
+
         </View>
     )
 }
@@ -37,7 +42,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         justifyContent: "center",
         alignItems: "center",
-        paddingTop: Platform.OS == "ios" ? 40: 0
+        paddingTop: Platform.OS == "ios" ? 40 : 0
     },
     leftContainer: {
         position: "absolute",
@@ -45,7 +50,13 @@ const styles = StyleSheet.create({
         left: 20,
         alignSelf: "center"
     },
+    rightContainer: {
+        position: "absolute",
+        top: Platform.OS == "ios" ? 50 : undefined,
+        right: 20,
+        alignSelf: "center"
+    },
     centerText: {
-        
+
     }
 })

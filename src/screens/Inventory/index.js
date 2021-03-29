@@ -7,6 +7,7 @@ import { OrderListItem } from '../../components/Lists/OrderListItem'
 import { DEFAULT_THEME_COLOR } from '../../constants/colors'
 import { fontStyles } from '../../constants/fontStyles'
 import CustomModal from '../../components/Modal'
+import InStockModal from '../../components/Modal/inStockModal'
 
 const chickenImage = require("../../assets/images/chicken.png")
 
@@ -14,6 +15,7 @@ const Inventory = ({
     navigation,
 }) => {
     const [reactiveModal, setReactiveModal] = useState(false)
+    const [inStockModal, setInStockModal] = useState(false)
 
     return (
         <View style={{ flex: 1, backgroundColor: "#fff" }}>
@@ -50,6 +52,19 @@ const Inventory = ({
                 stockText={"Out of Stock"}
                 stockTextStyle={{ ...fontStyles.ProximaRegularP2, color: "#E00000" }}
             />
+            <InStockModal
+                modalVisibel={inStockModal}
+                setModalVisible={setInStockModal}
+                buttons={[
+                    {
+                        title: "Confirm",
+                        titleStyle: {
+                            ...fontStyles.ProximaSemiBold,
+                        },
+                        onPress: () => setInStockModal(false)
+                    }
+                ]}
+            />
             <View style={styles.headerContainer}>
                 <Text style={[fontStyles.ProximaSemiBold, { fontSize: 24 }]}>Inventory</Text>
                 <Button
@@ -57,6 +72,7 @@ const Inventory = ({
                     backgroundColor={"#FFBE00"}
                     textColor={"#000"}
                     containerStyle={styles.button}
+                    onPress={() => navigation.navigate("AddNewItem")}
                 />
             </View>
 
@@ -90,6 +106,7 @@ const Inventory = ({
                                 title={"6 pc Chicken McShare Box"}
                                 titleStyle={[fontStyles.ProximaSemiBoldSmall, { color: "#000" }]}
                                 subtitle={"Until Tomorrow"}
+                                onPress={() => setInStockModal(true)}
                             />
                         }}
 

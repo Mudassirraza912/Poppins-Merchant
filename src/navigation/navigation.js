@@ -23,6 +23,7 @@ import OrderHistory from '../screens/OrderHistory'
 import { NewOrder } from '../screens/OrderScreen/newOrder'
 import { AcceptedOrder } from '../screens/OrderScreen/acceptedOrder'
 import Invoice from '../components/Invoice'
+import AddNewItem from '../screens/Inventory/AddNewItem'
 
 const Stack = createStackNavigator()
 
@@ -49,6 +50,7 @@ const MainNavigation = () => {
         <Stack.Screen name="NewOrder" component={NewOrder} />
         <Stack.Screen name="AcceptedOrder" component={AcceptedOrder} />
         <Stack.Screen name="Invoice" component={Invoice} />
+        <Stack.Screen name="AddNewItem" component={AddNewItem} />
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -10,7 +10,7 @@ const DayManagement = ({
     navigation, 
 }) => {
     const {date} = route.params
-    console.log(date.dateString.toString('MMMM yyyy'))
+    console.log()
     return(
         <View>
             <Header leftIconName="arrow-back" leftButtonPress={() => navigation.goBack()} />

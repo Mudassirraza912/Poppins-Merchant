@@ -18,11 +18,11 @@ export const NotificationSettingList = ({
             </View>
             <View style={styles.blockContainer}>
                 <ToggleSwitch
-                    isOn={on}
+                    isOn={isOn}
                     onColor="#FFBE00"
                     offColor="red"
                     onToggle={e => {
-                        setOn(e)
+                        // setOn(e)
                         onToggle(e)
                     }}
                     />

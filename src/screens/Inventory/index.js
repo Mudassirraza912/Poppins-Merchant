@@ -96,7 +96,7 @@ const Inventory = ({
                     </View>
 
                     <FlatList
-                        datgita={[1, 2, 3, 4, 5, 60]}
+                        data={[1, 2, 3, 4, 5, 60]}
                         renderItem={({ item }) => {
                             return <List
                                 avatar

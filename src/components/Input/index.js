@@ -25,7 +25,13 @@ const Input = ({
     value = '',
     changeButton = false,
     inputStyle = {},
-    changeButtonPress = () => { }
+    changeButtonPress = () => { },
+    editable = true,
+    InputContainerComponent = View,
+    leftComponent = false,
+    renderLeftComponent = () => { },
+    optional = false,
+    onInputContainerPress = () => {}
 }) => {
 
     // console.log("keyboardType", keyboardType)
@@ -54,8 +60,13 @@ const Input = ({
     const basicInput = () => {
         return (
             <View>
-                <Text style={[styles.defaulLableStyle, labelStyle, fontStyles.ProximaRegularP2, {}]}>{label}</Text>
-                <View style={{ ...styles.defaulContainerStyle, ...containerStyle }}>
+                <Text style={[styles.defaulLableStyle, labelStyle, fontStyles.ProximaRegularP2, {}]}>
+                    {label} {optional && <Text style={[fontStyles.ProximaRegularP2, {color: "#6A7C92"}]}>(Optional)</Text>}
+                </Text>
+                <InputContainerComponent onPress={onInputContainerPress} activeOpacity={0.7} style={{ ...styles.defaulContainerStyle, ...containerStyle }}>
+
+                    {leftComponent && renderLeftComponent()}
+
                     <TextInput
                         multiline={multiline}
                         value={value}
@@ -64,8 +75,9 @@ const Input = ({
                         placeholder={placeholder}
                         keyboardType={keyboardType}
                         secureTextEntry={isPassword && isShow}
-                        style={{ width: (isPassword || rightComponent) ? "90%" : "100%" }}
-                        onChangeText={onChangeText} />
+                        style={[{ width: (isPassword || rightComponent) ? "90%" : "100%" }, inputStyle]}
+                        onChangeText={onChangeText}
+                        editable={editable} />
                     {isPassword &&
                         <TouchableOpacity
                             onPress={() => setIsShow(!isShow)}
@@ -76,7 +88,7 @@ const Input = ({
 
 
                     {rightComponent && renderRightComponent()}
-                </View>
+                </InputContainerComponent>
 
             </View>
         )

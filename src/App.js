@@ -8,6 +8,7 @@ import { enableScreens } from 'react-native-screens'
 enableScreens()
 
 const App = () => {
+  console.disableYellowBox = true
   return (
     <>
       <Provider store={store}>

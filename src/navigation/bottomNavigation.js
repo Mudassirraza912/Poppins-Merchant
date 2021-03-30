@@ -10,6 +10,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { Notification } from '../screens/Notification/Notification'
 import Settings from '../screens/Settings'
 import Inventory from '../screens/Inventory'
+import StoreManagement from '../screens/StoreManagment'
+
 // import { Notification } from '../screens/Notification/Notification'
 // import Settings from '../screens/Settings'
 // import { Order } from '../screens/Order/order'
@@ -44,8 +46,8 @@ function BottomTabs() {
         }}
       />
       <Tab.Screen
-        name="Store"
-        component={Home}
+        name="StoreManagement"
+        component={StoreManagement}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
             return <MaterialIcons name={'storefront'} size={25} color={color} />

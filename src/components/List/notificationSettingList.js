@@ -7,13 +7,14 @@ import { fontStyles } from '../../constants/fontStyles'
 export const NotificationSettingList = ({
     title = "Title",
     onToggle = (isOn) => {},
-    isOn = false
+    isOn = false,
+    titleStyle
 }) => {
     const [on, setOn] = useState(isOn)
     return(
         <View style={styles.rowSpaceBtw}>
             <View style={styles.blockContainer}>
-                <Text style={fontStyles.ProximaRegularP1}>{title}</Text>
+                <Text style={[fontStyles.ProximaRegularP1, titleStyle]}>{title}</Text>
             </View>
             <View style={styles.blockContainer}>
                 <ToggleSwitch

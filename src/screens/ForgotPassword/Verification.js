@@ -9,6 +9,7 @@ import { fontStyles } from '../../constants/fontStyles'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import CustomModal from '../../components/Modal'
 import { useState } from 'react'
+import Header from '../../components/Header'
 
 
 const VerificationOTP = ({ navigation, route }) => {
@@ -25,6 +26,7 @@ const VerificationOTP = ({ navigation, route }) => {
 
     return (
         <View style={styles.mainContainer}>
+            <Header leftIconName="arrow-back" leftIcon={true} leftButtonPress={() => navigation.goBack()} />
             <CustomModal
                 title={"Email address Updated"}
                 successIcon

@@ -31,22 +31,20 @@ const Inventory = ({
                         title: "No",
                         backgroundColor: "transparent",
                         textColor: "#000",
-                        containerStyle: {
-                            width: "40%"
-                        },
+                         containerStyle: {width: '45%', marginHorizontal: 10},
                         titleStyle: {
                             ...fontStyles.ProximaSemiBold,
                             color: "#6A7C92"
-                        }
+                        },
+                        onPress: () => setReactiveModal(false)
                     },
                     {
                         title: "Yes",
-                        containerStyle: {
-                            width: "40%"
-                        },
+                         containerStyle: {width: '45%', marginHorizontal: 10},
                         titleStyle: {
                             ...fontStyles.ProximaSemiBold
-                        }
+                        },
+                        onPress: () => setReactiveModal(false)
                     }
                 ]}
                 stockText={"Out of Stock"}

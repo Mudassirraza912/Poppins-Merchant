@@ -11,6 +11,7 @@ const ChangePassword = ({navigation, route}) => {
     const [modal, setmodal] = useState(false)
     return(
         <View style={styles.mainContainer}>
+            {from == "forgot" && <Header leftIconName="arrow-back" leftIcon={true} leftButtonPress={() => navigation.goBack()} />}
             <CustomModal 
                 modalVisibel={modal}
                 setModalVisible={(a) => setmodal(a)}

@@ -62,7 +62,7 @@ export const AcceptedOrder = ({navigation, route}) => {
         <View style={[styles.btnContainer]}>
             <Button 
                 title={from == "accepted" ? "Prepare Order" : "Ready for pickup"}
-                onPress={() => {}}
+                onPress={() => {navigation.navigate("Home", {activeTab : 1})}}
              />
           
         </View>

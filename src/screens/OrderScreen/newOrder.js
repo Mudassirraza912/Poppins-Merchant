@@ -83,7 +83,7 @@ export const NewOrder = ({navigation}) => {
                  />
                 <Button 
                     title="Accept" 
-                    onPress={() => {}} 
+                    onPress={() => {navigation.navigate("Home", {activeTab : 2})}} 
                     containerStyle={{width: '45%'}}
                 />
             </View>

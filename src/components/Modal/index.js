@@ -44,6 +44,7 @@ const CustomModal = ({
     ],
     stockText = "",
     stockTextStyle = {},
+    component = <View />
 }) => {
 
 
@@ -69,12 +70,14 @@ const CustomModal = ({
 
                 <Text style={[styles.titleStyle, { ...fontStyles.ProximaRegularP2, textAlign: "center", width: "85%" }, descriptionStyle]}>{discription}</Text>
 
-
+                <View style={{ width: "90%"}}>
+                 {component}
+                </View>
                 <View style={{ width: "100%", marginTop: 20, }}>
                     <FlatList
                         numColumns={btnHorizontal ? 2 : 0}
                         data={buttons}
-                        columnWrapperStyle={{ width: '100%', justifyContent: 'center' }}
+                        // columnWrapperStyle={{ width: '100%', justifyContent: 'center' }}
                         renderItem={({ item, index }) => <Button {...item} />}
                     />
                 </View>

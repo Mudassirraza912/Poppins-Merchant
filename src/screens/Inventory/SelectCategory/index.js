@@ -7,14 +7,47 @@ import Header from '../../../components/Header'
 import Input from '../../../components/Input'
 import List from '../../../components/List'
 import { NotificationSettingList } from '../../../components/List/notificationSettingList'
+import CustomModal from '../../../components/Modal'
 import { fontStyles } from '../../../constants/fontStyles'
 
-
 const SelectCategory = ({ navigation }) => {
-
+    
+    const [show, setShow] = useState(false)
+    const [show1, setShow1] = useState(false)
 
     return (
         <View style={styles.container}>
+            <CustomModal
+                modalVisibel={show} 
+                successIcon={false}
+                title = "Add New Category"
+                discription = ""
+                component={
+                    <Input label="Name"  />
+                }
+                buttons={[
+                {
+                    title: "Save",
+                    onPress: () => {
+                        setShow(false)
+                        setShow1(true)
+
+                    }
+                }
+            ]} />
+            <CustomModal
+                modalVisibel={show1} 
+                successIcon 
+                title = "New Item Added"
+                discription = "This new item has been added and posted in the inventory" buttons={[
+                {
+                    title: "Close",
+                    onPress: () => {
+                        navigation.navigate('Home', {activeTab : 0})
+                        setShow1(false)
+                    }
+                }
+            ]} />
             <Header
                 centerText="Select Category"
                 leftIconName="arrow-back"
@@ -40,8 +73,9 @@ const SelectCategory = ({ navigation }) => {
             </ScrollView>
 
             <Button 
-              title="Add New Category"
-              containerStyle={{ bottom: "10%" }}
+                onPress={() => setShow(true)}
+                title="Add New Category"
+                containerStyle={{ bottom: "10%" }}
             />
         </View>
     )

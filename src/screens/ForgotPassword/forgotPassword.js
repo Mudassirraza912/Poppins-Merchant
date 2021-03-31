@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, Platform } from 'react-native'
 import Button from '../../components/Button'
+import Header from '../../components/Header'
 import Input from '../../components/Input'
 import { DEFAULT_THEME_COLOR } from '../../constants/colors'
 import { fontStyles } from '../../constants/fontStyles'
@@ -10,6 +11,7 @@ const ForgotPassword = ({navigation}) => {
 
     return(
         <View style={styles.mainContainer}>
+            <Header leftIconName="arrow-back" leftIcon={true} leftButtonPress={() => navigation.goBack()} />
             <View style={[styles.blockContainer, {marginTop: Platform.OS == "android" ? 0 : 50}]}>
                 <View style={styles.itemContainer}>
                     <Text style={fontStyles.ProximaBoldH1}>Forgot Password</Text>

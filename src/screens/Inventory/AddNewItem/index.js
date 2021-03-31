@@ -71,7 +71,7 @@ const AddNewItem = ({ navigation }) => {
 
                         <ImageBackground source={imageContainer} style={{ height: imageHeight, width: width - 45 }}>
                             <TouchableOpacity onPress={pickImage} style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 5 }}>
-                                {image ? <Image source={image} style={{ height: '100%', width: '100%' }} /> : <>
+                                {image ? <Image source={image} style={{ height: '95%', width: '95%' }} /> : <>
                                     <Image source={defaultImage} style={{ height: 46, width: 51 }} />
                                     <Text style={[fontStyles.ProximaRegularP2, { color: '#6A7C92', paddingVertical: 10 }]}>Upload photo of your product</Text>
                                     <Text style={[fontStyles.ProximaRegularP2, { color: '#6A7C92', paddingVertical: 10 }]}>500 px X 500 px</Text>

@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions, Text, View } from 'react-native';
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 // import { Constants, Svg } from 'expo';
 const { width } = Dimensions.get('window')
 import Svg, {
@@ -9,6 +9,7 @@ import Header from '../Header';
 import { fontStyles } from '../../constants/fontStyles';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Button from '../Button';
+import CustomModal from '../Modal';
 
 const Invoice = ({ navigation }) => {
     const renderZigZagView = () => {
@@ -27,9 +28,33 @@ const Invoice = ({ navigation }) => {
         return nodes
     }
 
-
+    const [visible, setVisible] = useState(false)
     return (
         <View style={styles.container}>
+            <CustomModal
+                title={"Are you sure you want to reject the order?"}
+                modalVisibel={visible}
+                btnHorizontal
+                buttons={[
+                    {
+                        title: "No",
+                        titleStyle:{ color: '#000'},
+                        onPress: () => {
+                            setVisible(false)
+                        },
+                        backgroundColor:"transparent",
+                        containerStyle: {width: '45%', marginHorizontal: 10},
+                    },
+                    {
+                        title: "Yes",
+                        onPress: () => {
+                            setVisible(false)
+                            navigation.navigate("Home", {activeTab : 1})
+                        },
+                        containerStyle: {width: '45%', marginHorizontal: 10},
+                    }
+                ]}
+            />
             <Header
                 centerText="Invoice"
                 leftIconName="arrow-back"
@@ -97,7 +122,7 @@ const Invoice = ({ navigation }) => {
                         <Button
                             title="Confirm pick up"
                             containerStyle={{ marginTop: 20 }}
-                            onPress={() => navigation.navigate("Home")}
+                            onPress={() => setVisible(true)}
                         />
 
                     </View>

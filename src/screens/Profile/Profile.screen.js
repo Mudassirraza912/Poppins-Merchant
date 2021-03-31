@@ -126,6 +126,13 @@ const Profile = ({ navigation }) => {
                 />
               </View>
 
+              <View style={styles.blockContainer}>
+                <Input
+                  label="Address"
+                  keyboardType="default"
+                  value={"102  Trouser Leg Road, Springfie..."}
+                />
+              </View>
             </View>
           </View>
         </ScrollView>

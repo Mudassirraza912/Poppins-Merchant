@@ -35,8 +35,8 @@ const Home = ({ navigation, user, route }) => {
           tabBarActiveTextColor="#000"
           tabBarUnderlineStyle={{backgroundColor: DEFAULT_THEME_COLOR}}
           prerenderingSiblingsNumber={0}
-          tabBarBackgroundColor="transparent">
-             <Tab heading="New Orders">
+          tabBarBackgroundColor="#F1F2FA">
+             <Tab heading="New Orders" tabStyle={{ backgroundColor: "#F1F2FA" }} activeTabStyle={{ backgroundColor: "#F1F2FA" }} >
               <FlatList 
                 data={[1,2,3,4]}
                 renderItem={({item, index}) => {
@@ -44,7 +44,7 @@ const Home = ({ navigation, user, route }) => {
                 }}
               />
             </Tab>
-            <Tab heading="Accepted">
+            <Tab heading="Accepted" tabStyle={{ backgroundColor: "#F1F2FA" }} activeTabStyle={{ backgroundColor: "#F1F2FA" }}>
               <FlatList 
                 data={[1,2,3,4]}
                 renderItem={({item, index}) => {
@@ -54,7 +54,7 @@ const Home = ({ navigation, user, route }) => {
                 }}
               />
             </Tab>
-            <Tab heading="In Kitchen">
+            <Tab heading="In Kitchen" tabStyle={{ backgroundColor: "#F1F2FA" }} activeTabStyle={{ backgroundColor: "#F1F2FA" }}>
               <FlatList 
                 data={[1,2,3,4]}
                 renderItem={({item, index}) => {
@@ -64,7 +64,7 @@ const Home = ({ navigation, user, route }) => {
                 }}
               />
             </Tab>
-            <Tab heading="Ready">
+            <Tab heading="Ready" tabStyle={{ backgroundColor: "#F1F2FA" }} activeTabStyle={{ backgroundColor: "#F1F2FA" }}>
               <FlatList 
                 data={[1,2,3,4]}
                 renderItem={({item, index}) => {

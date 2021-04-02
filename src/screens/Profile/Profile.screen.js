@@ -71,7 +71,7 @@ const Profile = ({ navigation }) => {
         leftButtonPress={navigation.goBack}
       />
       <SafeAreaView style={homeStyles.SafeAreaView2}>
-        <ScrollView>
+        <ScrollView contentContainerStyle={{ paddingBottom: '5%' }}>
           <View>
             <View style={styles.imageContainer}>
               {typeof image == "string" ? <View style={styles.avatarTitleContainer}>
@@ -136,7 +136,7 @@ const Profile = ({ navigation }) => {
             </View>
           </View>
         </ScrollView>
-        <View style={[styles.blockContainer, { position: 'absolute', bottom: 20, width: '100%' }]}>
+        <View style={[styles.blockContainer, {bottom: 20, width: '100%' }]}>
           <Button
             // onPress={() => setShow(true)}
             title="Save"

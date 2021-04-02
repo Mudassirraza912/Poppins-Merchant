@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image, FlatList, SafeAreaView, ScrollView} from 'react-native'
+import { View, Text, StyleSheet, Image, FlatList, SafeAreaView, ScrollView } from 'react-native'
 import Header from '../../components/Header'
 import { ItemList } from '../../components/List/itemList'
 import { fontStyles } from '../../constants/fontStyles'
@@ -8,65 +8,65 @@ import { Map } from '../../components/Map/map'
 
 const car = require('../../assets/images/car.png')
 
-export const AcceptedOrder = ({navigation, route}) => {
+export const AcceptedOrder = ({ navigation, route }) => {
     const { from } = route.params
-    return(
-        <View style={{flex: 1, backgroundColor: '#fff'}}>
-        <ScrollView>
-            <Header centerText={from == "accepted" ? "Accepted Orders" : "In Kitchen"} leftIcon={true} leftIconName="arrow-back" leftButtonPress={() => navigation.goBack()}  />
-                <View style={{backgroundColor: '#F1F2FA', padding: 10}}>
-                    <View style={[styles.rowSpaceBtw, styles.blockContainer, {marginTop: 10}]}>
+    return (
+        <View style={{ flex: 1, backgroundColor: '#fff' }}>
+            <Header centerText={from == "accepted" ? "Accepted Orders" : "In Kitchen"} leftIcon={true} leftIconName="arrow-back" leftButtonPress={() => navigation.goBack()} />
+            <ScrollView contentContainerStyle={{ paddingBottom: "15%" }}>
+                <View style={{ backgroundColor: '#F1F2FA', padding: 10 }}>
+                    <View style={[styles.rowSpaceBtw, styles.blockContainer, { marginTop: 10 }]}>
                         <View>
                             <Text style={fontStyles.ProximaSemiBold}>
                                 David W.
                             </Text>
                         </View>
 
-                        <View style={[styles.row, {marginHorizontal: 3}]}>
-                            <Image source={car} />   
-                            <Text style={[fontStyles.ProximaRegularP2 ,{marginHorizontal: 3, color: '#6A7C92'}]}>Pickup in:</Text> 
-                            <Text style={{marginHorizontal: 3}}>10 mins</Text>                 
+                        <View style={[styles.row, { marginHorizontal: 3 }]}>
+                            <Image source={car} />
+                            <Text style={[fontStyles.ProximaRegularP2, { marginHorizontal: 3, color: '#6A7C92' }]}>Pickup in:</Text>
+                            <Text style={{ marginHorizontal: 3 }}>10 mins</Text>
                         </View>
                     </View>
 
                     <View style={styles.blockContainer}>
-                        <Text style={[fontStyles.ProximaRegularP2, {color: '#6A7C92'}]}>
+                        <Text style={[fontStyles.ProximaRegularP2, { color: '#6A7C92' }]}>
                             Order #45
                         </Text>
                     </View>
                 </View>
-            <View style={[styles.blockContainer, styles.rowSpaceBtw, {paddingVertical: 15}]}>
-                <Text style={fontStyles.ProximaSemiBoldSmall}>Orders (2 items)</Text>
-                <Text style={fontStyles.ProximaSemiBoldSmall}>$17.00</Text>
-            </View>
-            <View style={styles.divider} /> 
+                <View style={[styles.blockContainer, styles.rowSpaceBtw, { paddingVertical: 15 }]}>
+                    <Text style={fontStyles.ProximaSemiBoldSmall}>Orders (2 items)</Text>
+                    <Text style={fontStyles.ProximaSemiBoldSmall}>$17.00</Text>
+                </View>
+                <View style={styles.divider} />
 
-            <View style={[styles.blockContainer, {paddingVertical: 15}]}>
-                <FlatList
-                    data={[1,2]}
-                    renderItem={({item, index}) => {
-                        return <ItemList isDropDown  />
-                    }}
+                <View style={[styles.blockContainer, { paddingVertical: 15 }]}>
+                    <FlatList
+                        data={[1, 2]}
+                        renderItem={({ item, index }) => {
+                            return <ItemList isDropDown />
+                        }}
+                    />
+                </View>
+
+                <View style={styles.blockContainer}>
+                    <Map
+                        mapStyle={[styles.mapStyle, { overflow: 'hidden' }]}
+                        containerStyle={[styles.mapStyle, styles.mapContainer]}
+                    />
+                </View>
+
+            </ScrollView>
+
+            <View style={[styles.btnContainer]}>
+                <Button
+                    title={from == "accepted" ? "Prepare Order" : "Ready for pickup"}
+                    onPress={() => { navigation.navigate("Home", { activeTab: 1 }) }}
                 />
+
             </View>
-
-            <View style={styles.blockContainer}>
-                <Map
-                    mapStyle={[styles.mapStyle, { overflow: 'hidden'}]} 
-                    containerStyle={[styles.mapStyle, styles.mapContainer]} 
-                />
-            </View>
-
-        </ScrollView>
-
-        <View style={[styles.btnContainer]}>
-            <Button 
-                title={from == "accepted" ? "Prepare Order" : "Ready for pickup"}
-                onPress={() => {navigation.navigate("Home", {activeTab : 1})}}
-             />
-          
         </View>
-    </View>
 
     )
 }
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     },
     btnContainer: {
         alignSelf: 'center',
-        position: 'absolute',
+        // position: 'absolute',
         bottom: 30,
         width: '100%'
     },
@@ -104,11 +104,11 @@ const styles = StyleSheet.create({
         height: 300,
         width: "99%",
     },
-    mapContainer: { 
-        justifyContent: 'flex-start', 
+    mapContainer: {
+        justifyContent: 'flex-start',
         // borderTopLeftRadius: 20,
         // borderTopRightRadius: 20,
         borderRadius: 20,
-        overflow:'hidden',
+        overflow: 'hidden',
     },
 })

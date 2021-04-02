@@ -88,6 +88,7 @@ const Inventory = ({
                         titleStyle={[fontStyles.ProximaSemiBoldSmall, { color: "#000" }]}
                         subtitle={"Until Tomorrow"}
                         onPress={() => setReactiveModal(true)}
+                        onRightIconPress={() => navigation.navigate("AddNewItem")}
                     />
                     <View style={styles.blockHeadingContainer}>
                         <Text style={[fontStyles.ProximaRegularP2, { color: "#222533" }]}>Available</Text>
@@ -105,6 +106,7 @@ const Inventory = ({
                                 titleStyle={[fontStyles.ProximaSemiBoldSmall, { color: "#000" }]}
                                 subtitle={"Until Tomorrow"}
                                 onPress={() => setInStockModal(true)}
+                                onRightIconPress={() => navigation.navigate("AddNewItem")}
                             />
                         }}
 

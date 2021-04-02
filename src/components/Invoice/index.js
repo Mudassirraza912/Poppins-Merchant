@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, Text, View } from 'react-native';
+import { StyleSheet, Dimensions, Text, View, ScrollView } from 'react-native';
 import React, { Component, useState } from 'react';
 // import { Constants, Svg } from 'expo';
 const { width } = Dimensions.get('window')
@@ -38,20 +38,20 @@ const Invoice = ({ navigation }) => {
                 buttons={[
                     {
                         title: "No",
-                        titleStyle:{ color: '#000'},
+                        titleStyle: { color: '#000' },
                         onPress: () => {
                             setVisible(false)
                         },
-                        backgroundColor:"transparent",
-                        containerStyle: {width: '45%', marginHorizontal: 10},
+                        backgroundColor: "transparent",
+                        containerStyle: { width: '45%', marginHorizontal: 10 },
                     },
                     {
                         title: "Yes",
                         onPress: () => {
                             setVisible(false)
-                            navigation.navigate("Home", {activeTab : 1})
+                            navigation.navigate("Home", { activeTab: 1 })
                         },
-                        containerStyle: {width: '45%', marginHorizontal: 10},
+                        containerStyle: { width: '45%', marginHorizontal: 10 },
                     }
                 ]}
             />
@@ -61,78 +61,79 @@ const Invoice = ({ navigation }) => {
                 leftButtonPress={navigation.goBack}
             />
             {/* <View style={{ width, height: 100, backgroundColor: 'cyan' }} /> */}
+            <ScrollView contentContainerStyle={{ paddingVertical: "10%" }}>
+                <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                    <View style={styles.invoiceContainer} >
+                        <View style={{ padding: 10 }}>
+                            <Text style={[fontStyles.ProximaRegularP1, styles.itemContainer]}>Orders: ABCDE1234</Text>
+                            <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>Date: 1 March 2021</Text>
+                        </View>
+                        <View style={{ padding: 10 }}>
+                            <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer]}>Invoice To:</Text>
+                            <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>David White</Text>
+                        </View>
+                        <View style={{ padding: 10 }}>
+                            <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer]}>Invoice From:</Text>
+                            <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>McDonald's</Text>
+                            <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>102  Trouser Leg Road, Springfield</Text>
+                        </View>
+                        <View style={[styles.divider, { marginTop: 10 }]} />
+                        <View style={styles.cartDetails}>
+                            <View>
+                                <Text style={[fontStyles.ProximaSemiBoldSmall]}>1{"  "}1 pc Chicken Mcdo w/ Rice</Text>
+                                <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>{"    "}Chicken and Rice</Text>
+                            </View>
+                            <View>
+                                <Text style={fontStyles.ProximaRegularP2}>$5.00</Text>
+                                <Ionicons name="chevron-down" size={20} color={"#6905DB"} style={[styles.itemContainer, { alignSelf: "flex-end" }]} />
+                            </View>
+                        </View>
+                        <View style={[styles.divider, { marginTop: 10 }]} />
+                        <View style={styles.cartDetails}>
+                            <View>
+                                <Text style={[fontStyles.ProximaSemiBoldSmall]}>1{"  "}1 pc Chicken Mcdo w/ Rice</Text>
+                                <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>{"    "}Chicken and Rice</Text>
+                            </View>
+                            <View>
+                                <Text style={fontStyles.ProximaRegularP2}>$5.00</Text>
+                                <Ionicons name="chevron-down" size={20} color={"#6905DB"} style={[styles.itemContainer, { alignSelf: "flex-end" }]} />
+                            </View>
+                        </View>
+                        <View style={[styles.divider, { marginTop: 10 }]} />
 
-            <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                <View style={styles.invoiceContainer} >
-                    <View style={{ padding: 10 }}>
-                        <Text style={[fontStyles.ProximaRegularP1, styles.itemContainer]}>Orders: ABCDE1234</Text>
-                        <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>Date: 1 March 2021</Text>
-                    </View>
-                    <View style={{ padding: 10 }}>
-                        <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer]}>Invoice To:</Text>
-                        <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>David White</Text>
-                    </View>
-                    <View style={{ padding: 10 }}>
-                        <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer]}>Invoice From:</Text>
-                        <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>McDonald's</Text>
-                        <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>102  Trouser Leg Road, Springfield</Text>
-                    </View>
-                    <View style={[styles.divider, { marginTop: 10 }]} />
-                    <View style={styles.cartDetails}>
-                        <View>
-                            <Text style={[fontStyles.ProximaSemiBoldSmall]}>1{"  "}1 pc Chicken Mcdo w/ Rice</Text>
-                            <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>{"    "}Chicken and Rice</Text>
-                        </View>
-                        <View>
-                            <Text style={fontStyles.ProximaRegularP2}>$5.00</Text>
-                            <Ionicons name="chevron-down" size={20} color={"#6905DB"} style={[styles.itemContainer, { alignSelf: "flex-end" }]} />
-                        </View>
-                    </View>
-                    <View style={[styles.divider, { marginTop: 10 }]} />
-                    <View style={styles.cartDetails}>
-                        <View>
-                            <Text style={[fontStyles.ProximaSemiBoldSmall]}>1{"  "}1 pc Chicken Mcdo w/ Rice</Text>
-                            <Text style={[fontStyles.ProximaRegularP2, styles.itemContainer, styles.lightColor]}>{"    "}Chicken and Rice</Text>
-                        </View>
-                        <View>
-                            <Text style={fontStyles.ProximaRegularP2}>$5.00</Text>
-                            <Ionicons name="chevron-down" size={20} color={"#6905DB"} style={[styles.itemContainer, { alignSelf: "flex-end" }]} />
-                        </View>
-                    </View>
-                    <View style={[styles.divider, { marginTop: 10 }]} />
+                        <View style={styles.orderDetails}>
+                            <View style={styles.orderDetailsSubContainer}>
+                                <Text style={fontStyles.ProximaRegularP2}>Payment</Text>
+                                <Text style={fontStyles.ProximaRegularP2}>Credit Card</Text>
+                            </View>
+                            <View style={styles.orderDetailsSubContainer}>
+                                <Text style={fontStyles.ProximaRegularP2}>Subtotal</Text>
+                                <Text style={fontStyles.ProximaRegularP2}>$5.00</Text>
+                            </View>
+                            <View style={styles.orderDetailsSubContainer}>
+                                <Text style={fontStyles.ProximaRegularP2}>Fees & Taxes</Text>
+                                <Text style={fontStyles.ProximaRegularP2}>$1.00</Text>
+                            </View>
+                            <View style={styles.orderDetailsSubContainer}>
+                                <Text style={fontStyles.ProximaSemiBold}>Total</Text>
+                                <Text style={fontStyles.ProximaSemiBold}>$6.00</Text>
+                            </View>
 
-                    <View style={styles.orderDetails}>
-                        <View style={styles.orderDetailsSubContainer}>
-                            <Text style={fontStyles.ProximaRegularP2}>Payment</Text>
-                            <Text style={fontStyles.ProximaRegularP2}>Credit Card</Text>
-                        </View>
-                        <View style={styles.orderDetailsSubContainer}>
-                            <Text style={fontStyles.ProximaRegularP2}>Subtotal</Text>
-                            <Text style={fontStyles.ProximaRegularP2}>$5.00</Text>
-                        </View>
-                        <View style={styles.orderDetailsSubContainer}>
-                            <Text style={fontStyles.ProximaRegularP2}>Fees & Taxes</Text>
-                            <Text style={fontStyles.ProximaRegularP2}>$1.00</Text>
-                        </View>
-                        <View style={styles.orderDetailsSubContainer}>
-                            <Text style={fontStyles.ProximaSemiBold}>Total</Text>
-                            <Text style={fontStyles.ProximaSemiBold}>$6.00</Text>
+                            <Button
+                                title="Confirm pick up"
+                                containerStyle={{ marginTop: 20 }}
+                                onPress={() => setVisible(true)}
+                            />
+
                         </View>
 
-                        <Button
-                            title="Confirm pick up"
-                            containerStyle={{ marginTop: 20 }}
-                            onPress={() => setVisible(true)}
-                        />
-
+                        <Svg height={10} width={width - 50} style={{ top: 10 }}>
+                            {renderZigZagView()}
+                        </Svg>
                     </View>
 
-                    <Svg height={10} width={width - 50} style={{ top: 10 }}>
-                        {renderZigZagView()}
-                    </Svg>
                 </View>
-
-            </View>
+            </ScrollView>
         </View>
     );
 

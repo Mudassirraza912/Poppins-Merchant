@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { Dimensions, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, Image, ImageBackground, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import ImageCropPicker from 'react-native-image-crop-picker'
 import Button from '../../../components/Button'
 import Header from '../../../components/Header'
@@ -13,7 +13,11 @@ const defaultImage = require('../../../assets/images/select_default.png')
 
 const { width } = Dimensions.get("screen")
 
-const imageHeight = (width / 2) + 10
+const incrementNumber = width >= 400 ? 10 : 6
+
+const imageHeight = (width / 2) + incrementNumber
+
+console.log(Platform.OS, width)
 
 const AddNewItem = ({ navigation }) => {
 

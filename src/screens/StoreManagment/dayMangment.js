@@ -60,10 +60,10 @@ const DayManagement = ({
             </View>
 
             <View style={styles.blockContainer}>
-                <InputTime label="Opening Time" placeHolderText="HH:mm" onTimeChange={() => {}} />
+                <InputTime label="Opening Time" placeHolderText="HH:mm" style={{ padding: 15,  }} onTimeChange={() => {}} />
             </View>
             <View style={styles.blockContainer}>
-                <InputTime label="Closing Time" placeHolderText="HH:mm" onTimeChange={() => {}} />
+                <InputTime label="Closing Time" placeHolderText="HH:mm" style={{ padding: 15,  }} onTimeChange={() => {}} />
             </View>
 
             <View style={styles.submitBtn}>

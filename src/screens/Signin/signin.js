@@ -1,13 +1,52 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { View, Text, StyleSheet, Platform, ScrollView, TouchableOpacity } from 'react-native'
+import { connect } from 'react-redux'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import { DEFAULT_THEME_COLOR } from '../../constants/colors'
 import { fontStyles } from '../../constants/fontStyles'
+import { userLogin } from '../../stores/actions/user.action'
+import RenderError from '../../utils/renderError'
 
+const SignIn = ({navigation, userLogin}) => {
+    const [username, setUsername] = useState("")
+    const [usernameError, setUsernameError] = useState("")
+    const [password, setPassword] = useState("")
+    const [passwordError, setPasswordError] = useState("")
 
-const SignIn = ({navigation}) => {
+    const validate = () => {
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+        setUsernameError(username ? "" : "Username is required")
+        setPasswordError(password ? "" : "Password is required")
 
+        if (username && password) {
+            return true
+
+        } else {
+            return false
+        }
+    }
+
+    const handleSubmit = async () => {
+        let formStatus = validate()
+
+        if (formStatus) {
+            const user = {
+                "username": username,
+                "password": password,
+            }
+            let { status } = await userLogin(user)
+            if (status) {
+                navigation.navigate("Home", {activeTab : 0})
+            }
+
+            // alert("done")
+        } else {
+            // alert("errors")
+            validate()
+        }
+
+    }
 
     return (
         <View style={styles.mainContainer}>
@@ -24,10 +63,12 @@ const SignIn = ({navigation}) => {
                     </View>
 
                     <View style={styles.blockContainer}>
-                         <Input label="Enter Email" keyboardType="default"/>
+                         <Input value={username} onChangeText={setUsername} label="Enter Email" keyboardType="default"/>
+                         <RenderError errorText={usernameError} />
                     </View>
                     <View style={styles.blockContainer}>
-                        <Input label="Password" isPassword keyboardType="default" />
+                        <Input value={password} onChangeText={setPassword} label="Password" isPassword keyboardType="default" />
+                        <RenderError errorText={passwordError} />
                     </View>
 
             <View style={styles.blockContainer}>
@@ -36,7 +77,8 @@ const SignIn = ({navigation}) => {
 
                     <View style={styles.blockContainer}>
                         <Button 
-                            onPress={() => navigation.navigate("Home", {activeTab : 0})}
+                            onPress={() => handleSubmit()}
+                            // onPress={() => navigation.navigate("Home", {activeTab : 0})}
                             title="Sign in" 
                             titleStyle={fontStyles.ProximaSemiBold} 
                             />
@@ -95,4 +137,14 @@ const styles = StyleSheet.create({
     }
 
 })
-export default SignIn;
+
+const mapStateToProps = (state) => ({
+
+})
+
+const mapDispatchToProps = {
+    userLogin
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

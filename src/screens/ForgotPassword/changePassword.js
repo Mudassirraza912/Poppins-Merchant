@@ -6,9 +6,40 @@ import CustomModal from '../../components/Modal'
 import { DEFAULT_THEME_COLOR } from '../../constants/colors'
 import { fontStyles } from '../../constants/fontStyles'
 import Header from '../../components/Header'
-const ChangePassword = ({navigation, route}) => {
+import { connect } from 'react-redux'
+import { changePass } from '../../stores/actions/user.action'
+
+const ChangePassword = ({navigation, route, changePass, resetPassToken}) => {
     const { from } = route.params
     const [modal, setmodal] = useState(false)
+    const [pass, setpass] = useState('')
+    const [confirmPass, setconfirmPass] = useState('')
+    const [error, setError] = useState('')
+
+    const validate = () => {
+        if(pass === confirmPass) {
+            return true
+        }else {
+            setError('Password not matched')
+            return false
+        }
+    }
+
+    const handleSubmit = async () => {
+        const isValidate = await validate()
+        if (isValidate) {
+            var obj = {
+                email: resetPassToken.email,
+                password: pass
+            }
+            let { status } = await changePass(obj, resetPassToken.token)
+            console.log("status Handle submit" , status)
+            if(status) {
+                setmodal(true)
+            }
+        }
+    }
+
     return(
         <View style={styles.mainContainer}>
             {from == "forgot" && <Header leftIconName="arrow-back" leftIcon={true} leftButtonPress={() => navigation.goBack()} />}
@@ -55,15 +86,15 @@ const ChangePassword = ({navigation, route}) => {
             </View>}
 
             <View style={[styles.blockContainer, {marginTop: 30}]}>
-                <Input label="New Password" isPassword/>
+                <Input label="New Password" isPassword value={pass} onChangeText={setpass}/>
             </View>
             <View style={[styles.blockContainer]}>
-                <Input label="Confirm Password" isPassword/>
+                <Input label="Confirm Password" isPassword value={confirmPass} onChangeText={setconfirmPass}/>
             </View>
 
             <View style={[styles.blockContainer, { marginTop: 30}]}>
                 <Button 
-                onPress={() => {setmodal(!modal)}}
+                onPress={() => {handleSubmit()}}
                 title="Continue" titleStyle={fontStyles.ProximaSemiBold} />
             </View>
 
@@ -95,4 +126,12 @@ const styles = StyleSheet.create({
     }
 
 })
-export default ChangePassword;
+const mapStateToProps = (state) => ({
+    resetPassToken: state.userReducer.resetPassToken
+})
+
+const mapDispatchToProps = {
+    changePass
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword)

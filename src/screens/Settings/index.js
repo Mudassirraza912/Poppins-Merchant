@@ -1,10 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import { FlatList, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { connect } from 'react-redux'
 import List from '../../components/List'
+import CustomModal from '../../components/Modal'
 import { fontStyles } from '../../constants/fontStyles'
-
-const Settings = ({ navigation }) => {
+import { logout } from '../../stores/actions/user.action'
+const Settings = ({ navigation, logout }) => {
+    const [show, setIshow] = useState(false)
 
     const [list] = useState([
         {
@@ -100,12 +103,35 @@ const Settings = ({ navigation }) => {
             containerStyle: {
                 paddingVertical: 20
             },
-            // onPress: () => alert()
+            onPress: () => {setIshow(true)}
         },
     ])
 
     return (
         <View style={styles.container}>
+            <CustomModal 
+                modalVisibel={show}
+                title="Logout"
+                successIcon={false}
+                discription="Are you sure you want to logout?"
+                buttons={[
+                    {
+                        title:"Yes",
+                        titleStyle:{...fontStyles.ProximaSemiBold},
+                        onPress: async () => {
+                            setIshow(!show)
+                            await logout()
+                            navigation.navigate('SignIn')
+                        }
+                    },
+                    {
+                        title:"No",
+                        titleStyle:{...fontStyles.ProximaSemiBold, color: "#000"},
+                        onPress: () => setIshow(!show),
+                        backgroundColor:"transparent"
+                    },
+                ]}
+            />
             {/* <SafeAreaView> */}
             <View style={styles.blockContainer}>
                 <Text style={fontStyles.ProximaBoldH1}>
@@ -139,7 +165,15 @@ const Settings = ({ navigation }) => {
     )
 }
 
-export default Settings
+const mapStateToProps = (state) => ({
+    userDetails : state.userReducer.user
+  })
+  
+  const mapDispatchToProps = {
+      logout
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Settings);
 
 const styles = StyleSheet.create({
     container: {

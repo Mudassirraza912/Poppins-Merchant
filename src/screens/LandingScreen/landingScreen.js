@@ -1,13 +1,19 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { View, Text, Image, ImageBackground, StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
 import Button from '../../components/Button'
 import Invoice from '../../components/Invoice'
 import { fontStyles } from '../../constants/fontStyles'
 const Splash = require('../../assets/images/Splash.png')
-const LandingScreen = ({ navigation }) => {
+const LandingScreen = ({ navigation, authToken, user }) => {
 
-
+    useEffect(() => {
+        console.log("authToken", authToken, "user", user )
+        if(user && authToken){
+            navigation.navigate("Home", {activeTab : 0})
+        }
+    }, [])
 
     return (
         <View style={{ flex: 1 }}>
@@ -60,4 +66,13 @@ const styles = StyleSheet.create({
     }
 })
 
-export default LandingScreen;
+const mapStateToProps = (state) => ({
+    user: state.userReducer.user,
+    authToken: state.userReducer.authToken
+})
+
+const mapDispatchToProps = {
+    
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingScreen)

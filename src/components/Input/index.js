@@ -71,7 +71,6 @@ const Input = ({
                         multiline={multiline}
                         value={value}
                         numberOfLines={numberOfLines}
-                        multiline={true}
                         placeholder={placeholder}
                         keyboardType={keyboardType}
                         secureTextEntry={isPassword && isShow}

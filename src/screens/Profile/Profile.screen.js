@@ -20,12 +20,19 @@ import Input from '../../components/Input'
 import Button from '../../components/Button'
 import ImageCropPicker from 'react-native-image-crop-picker'
 import OptionsMenu from "react-native-option-menu";
-
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { connect } from 'react-redux'
+import { updateProfile } from '../../stores/actions/user.action'
+import CustomModal from '../../components/Modal'
 
-const Profile = ({ navigation }) => {
+
+const Profile = ({ navigation, updateProfile, userDetails }) => {
 
   const [image, setImage] = useState("RD")
+  const [fullName, setFullName] = useState(userDetails.payload.name)
+  const [email, setemail] = useState(userDetails.payload.email)
+  const [phoneNo, setphoneNo] = useState(userDetails.payload.phone)
+  const [show, setshow] = useState(false)
 
   const openImageLibrary = async () => {
     try {
@@ -41,7 +48,6 @@ const Profile = ({ navigation }) => {
     } catch (error) {
 
     }
-
   }
 
   const openCamera = async () => {
@@ -58,13 +64,39 @@ const Profile = ({ navigation }) => {
     } catch (error) {
       console.log(error)
     }
+  }
 
+
+  const onUpdate = async () => {
+    var index = fullName.indexOf(" ")
+    var obj = {
+      name: fullName,
+      email: email,
+      phone: phoneNo
+    }
+    const { status } = await updateProfile(obj)
+    if (status) {
+      setshow(true)
+    }
   }
 
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor={'#f9f9f9'} />
-
+      <CustomModal
+                modalVisibel={show} 
+                successIcon 
+                title = "Profile Updated"
+                discription=""
+                buttons={[
+                {
+                    title: "Close",
+                    onPress: () => {
+                        navigation.navigate('Home')
+                        setshow(false)
+                    },
+                }
+            ]} />
       <Header
         centerText="Profile"
         leftIconName="arrow-back"
@@ -99,24 +131,27 @@ const Profile = ({ navigation }) => {
                 <Input
                   label="Full Name"
                   keyboardType="default"
-                  value={"Robert Davidson"}
+                  value={fullName}
+                  onChangeText={(e) => setFullName(e)}
                 />
               </View>
-              {/* <View style={styles.blockContainer}>
+              <View style={styles.blockContainer}>
                 <Input
                   label="Mobile Number"
                   keyboardType="default"
                   type="phoneInput"
-                  value={"2025550110"}
-                  changeNumberButton
-                  changeNumberButtonPress={() => navigation.navigate("ChangeNumber")}
+                  value={phoneNo}
+                  onChangeText={(e) => setphoneNo(e.dialCode + e.unmaskedPhoneNumber)}
+                  // changeNumberButton
+                  // changeNumberButtonPress={() => navigation.navigate("ChangeNumber")}
                 />
-              </View> */}
+              </View>
               <View style={styles.blockContainer}>
                 <Input
                   label="Email Address"
                   keyboardType="default"
-                  value={"robertdavidson23@gmail.com"}
+                  value={email}
+                  onChangeText={(e) => setemail(e)}
                   rightComponent
                   renderRightComponent={() => (
                     <TouchableOpacity onPress={() => navigation.navigate("ChangeNumber")} style={{ right: 30, top: 5 }}>
@@ -126,19 +161,19 @@ const Profile = ({ navigation }) => {
                 />
               </View>
 
-              <View style={styles.blockContainer}>
+              {/* <View style={styles.blockContainer}>
                 <Input
                   label="Address"
                   keyboardType="default"
                   value={"102  Trouser Leg Road, Springfie..."}
                 />
-              </View>
+              </View> */}
             </View>
           </View>
         </ScrollView>
         <View style={[styles.blockContainer, { position: 'absolute', bottom: 20, width: '100%' }]}>
           <Button
-            // onPress={() => setShow(true)}
+            onPress={() => onUpdate()}
             title="Save"
             titleStyle={fontStyles.ProximaSemiBoldSmall}
           />
@@ -148,8 +183,15 @@ const Profile = ({ navigation }) => {
   )
 }
 
-export default Profile
+const mapStateToProps = (state) => ({
+  userDetails : state.userReducer.user
+})
 
+const mapDispatchToProps = {
+  updateProfile
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 const styles = StyleSheet.create({
   imageContainer: {
     width: "100%",

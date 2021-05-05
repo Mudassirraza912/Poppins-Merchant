@@ -141,7 +141,7 @@ export const updateProfile = (obj) => {
     const { authToken, userId } = getState().userReducer
     dispatch({type: "FETCHING"})
     try {
-      let { data } = await postApi(`${base_url}/users/update_user/${userId}`, obj, authToken)
+      let { data } = await postApi(`${base_url}/merchants/update_merchant/${userId}`, obj, authToken)
       if (data.code == 200) {
         dispatch({ type: "UPDATED_PROFILE_SUCCESS", payload: data })
         return Promise.resolve({ status: true })

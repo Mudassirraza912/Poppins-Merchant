@@ -40,7 +40,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>App needs photo library Access</string>
 	<key>NSCameraUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
@@ -75,13 +75,13 @@
 		<string>Octicons.ttf</string>
 		<string>Zocial.ttf</string>
 		<string>Fontisto.ttf</string>
-    <string>ProximaNova-Regular.ttf</string>
-    <string>ProximaNova-Bold.ttf</string>
-    <string>ProximaNova-Semibold.otf</string>
-    <string>SFProDisplay-Regular.ttf</string>
-    <string>SFProDisplay-Semibold.ttf</string>
-    <string>SFProText-Bold.ttf</string>
-    <string>SFProText-Regular.ttf</string>
+		<string>ProximaNova-Regular.ttf</string>
+		<string>ProximaNova-Bold.ttf</string>
+		<string>ProximaNova-Semibold.otf</string>
+		<string>SFProDisplay-Regular.ttf</string>
+		<string>SFProDisplay-Semibold.ttf</string>
+		<string>SFProText-Bold.ttf</string>
+		<string>SFProText-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

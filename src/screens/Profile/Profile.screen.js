@@ -24,6 +24,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { connect } from 'react-redux'
 import { updateProfile } from '../../stores/actions/user.action'
 import CustomModal from '../../components/Modal'
+import { uploadFile_to_s3_bucket } from '../../helpers/image_upload_to_s3'
 
 
 const Profile = ({ navigation, updateProfile, userDetails }) => {
@@ -40,11 +41,13 @@ const Profile = ({ navigation, updateProfile, userDetails }) => {
         multiple: false
       })
       console.log(image)
-      setImage({
+      const file = {
         name: image.filename,
         uri: image.path,
         type: image.mime
-      })
+      }
+      setImage(file)
+      let result  = await uploadFile_to_s3_bucket(file)
     } catch (error) {
 
     }
@@ -55,12 +58,13 @@ const Profile = ({ navigation, updateProfile, userDetails }) => {
       let image = await ImageCropPicker.openCamera({
         // multiple: false
       })
-      console.log(image)
-      setImage({
+      const file = {
         name: image.filename,
         uri: image.path,
         type: image.mime
-      })
+      }
+      setImage(file)
+      let result  = await uploadFile_to_s3_bucket(file)
     } catch (error) {
       console.log(error)
     }

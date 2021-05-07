@@ -22,12 +22,12 @@ import ImageCropPicker from 'react-native-image-crop-picker'
 import OptionsMenu from "react-native-option-menu";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { connect } from 'react-redux'
-import { updateProfile } from '../../stores/actions/user.action'
+import { updateProfile, updateProfileImage } from '../../stores/actions/user.action'
 import CustomModal from '../../components/Modal'
 import { uploadFile_to_s3_bucket } from '../../helpers/image_upload_to_s3'
 
 
-const Profile = ({ navigation, updateProfile, userDetails }) => {
+const Profile = ({ navigation, updateProfile, userDetails, updateProfileImage }) => {
 
   const [image, setImage] = useState("RD")
   const [fullName, setFullName] = useState(userDetails.payload.name)
@@ -65,6 +65,18 @@ const Profile = ({ navigation, updateProfile, userDetails }) => {
       }
       setImage(file)
       let result  = await uploadFile_to_s3_bucket(file)
+      console.log("result setImage", result)
+      if(result.status) {
+        var obj = {
+          image_url : result.body.location
+        }
+        let { status }  = await updateProfileImage(obj)
+          if (status) {
+            setshow(true)
+          }
+      }else {
+        Alert.alert("Alert", result.message)
+      }
     } catch (error) {
       console.log(error)
     }
@@ -192,7 +204,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  updateProfile
+  updateProfile, updateProfileImage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -158,6 +158,29 @@ export const updateProfile = (obj) => {
   }
 }
 
+export const updateProfileImage = (imageUrl) => {
+  return async function(dispatch, getState) {
+    const { authToken, userId } = getState().userReducer
+    dispatch({type: "FETCHING"})
+    try {
+      let { data } = await postApi(`${base_url}merchants/update_image_url/${userId}`, imageUrl, authToken)
+      console.log("data updateProfileImage", data)
+      if (data.code == 200) {
+        // dispatch({ type: "UPDATED_PROFILE_SUCCESS", payload: data })
+        return Promise.resolve({ status: true })
+      } else {
+        dispatch({ type: "ERROR" })
+        Alert.alert("error", data.message)
+        return Promise.resolve({ status: false })
+      }
+    } catch ({message}) {
+      dispatch({ type: "ERROR" })
+      Alert.alert("error", message)
+      return Promise.reject({ status: false, message })
+    }
+  }
+}
+
 export const logout = () => {
   return async function (dispatch) {
       await AsyncStorage.clear()

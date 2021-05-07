@@ -1,7 +1,7 @@
 
 export const S3_BUCKET_OPTIONS = {
     keyPrefix: 'images/', // Ex. myuploads/
-    bucket: 'poppins', // Ex. aboutreact
+    bucket: 'poppins-services', // Ex. aboutreact
     region: 'us-east-1', // Ex. ap-south-1
     accessKey: 'AKIARHLUHGFBQDMO55HY',
     // Ex. AKIH73GS7S7C53M46OQ

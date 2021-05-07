@@ -19,7 +19,9 @@ export const uploadFile_to_s3_bucket = (imageObj, setUploadSuccessMessage) => {
           }%`,
       )
       .then((response) => {
-        if (response.status !== 201) Alert.alert("Alert" ,'Failed to upload image to S3');
+        if (response.status !== 201) {
+          return Promise.resolve({ status: false , message:'Failed to upload image to S3'})
+        } ;
         console.log(response);
         let {
           bucket,
@@ -35,7 +37,7 @@ export const uploadFile_to_s3_bucket = (imageObj, setUploadSuccessMessage) => {
           \n4. location => ${location}`,
         );
 
-        return response.body.postResponse
+          return Promise.resolve( {status: true ,body: response.body.postResponse, message: "Uploaded Successfully"})
         /**
          * {
          *   postResponse: {
